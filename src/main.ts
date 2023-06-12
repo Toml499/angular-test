@@ -18,11 +18,22 @@ import { of, from, map, tap, take, Observable } from 'rxjs';
 export class App implements OnInit {
   name = 'Angular';
 
+  allMonitorPoints: MonitorPoint[] = [
+    { name: 'mp1', id: 1 },
+    { name: 'mp2', id: 2 },
+    { name: 'mp3', id: 3 },
+  ];
+
+  selectedMonitorPoints: MonitorPoint[] = [
+    { name: 'mp1', id: 1 },
+    { name: 'mp2', id: 2 },
+    { name: 'mp3', id: 3 },
+    { name: 'mp4', id: 4 },
+  ];
+
   getItems(): Observable<MonitorPoint[]> {
     const allMonitorPoints = new Observable<MonitorPoint[]>((observer) => {
-      observer.next([new MonitorPoint('mp1', 1)]);
-      observer.next([new MonitorPoint('mp2', 2)]);
-      observer.next([new MonitorPoint('mp3', 3)]);
+      observer.next(this.selectedMonitorPoints);
     });
 
     return allMonitorPoints;
